@@ -18,10 +18,12 @@ class PiccoloFilePickerExample extends StatefulWidget {
   const PiccoloFilePickerExample({super.key});
 
   @override
-  State<PiccoloFilePickerExample> createState() => _PiccoloFilePickerExampleState();
+  State<PiccoloFilePickerExample> createState() =>
+      _PiccoloFilePickerExampleState();
 }
 
-class _PiccoloFilePickerExampleState extends State<PiccoloFilePickerExample> implements PiccoloPickerListener {
+class _PiccoloFilePickerExampleState extends State<PiccoloFilePickerExample>
+    implements PiccoloPickerListener {
   final Map<FileType, String> _selectedFiles = {};
   late final PiccoloPickerHandler _pickerHandler;
 
@@ -37,7 +39,8 @@ class _PiccoloFilePickerExampleState extends State<PiccoloFilePickerExample> imp
 
     setState(() {
       if (isList) {
-        _selectedFiles[FileType.multiple] = (result as List<String>).map(p.basename).join(', ');
+        _selectedFiles[FileType.multiple] =
+            (result as List<String>).map(p.basename).join(', ');
       } else {
         _selectedFiles[_currentType] = result.toString();
       }
@@ -139,7 +142,8 @@ class _PiccoloFilePickerExampleState extends State<PiccoloFilePickerExample> imp
                         child: FileCard(
                           type: e.key,
                           path: e.value,
-                          onRemove: () => setState(() => _selectedFiles.remove(e.key)),
+                          onRemove: () =>
+                              setState(() => _selectedFiles.remove(e.key)),
                         ),
                       ),
                     ),
@@ -189,7 +193,7 @@ class PickerCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Color(0xFF159e0e).withOpacity(0.1),
+                    color: Color(0xFF159e0e).withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -215,7 +219,11 @@ class PickerCard extends StatelessWidget {
 }
 
 class FileCard extends StatelessWidget {
-  const FileCard({super.key, required this.type, required this.path, required this.onRemove});
+  const FileCard(
+      {super.key,
+      required this.type,
+      required this.path,
+      required this.onRemove});
 
   final FileType type;
   final String path;
@@ -229,11 +237,12 @@ class FileCard extends StatelessWidget {
           border: Border.all(color: Colors.grey[200]!),
         ),
         child: ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           leading: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Color(0xFF159e0e).withOpacity(0.1),
+              color: Color(0xFF159e0e).withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
