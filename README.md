@@ -7,7 +7,13 @@
     <table>
         <tr>
             <td align="center">
-                <img src="https://raw.githubusercontent.com/Dipak677/piccolo_file_picker/refs/heads/main/piccolo_file_picker.jpg?raw=true" alt="Piccolo File Picker" width="300px">
+                <b>Android</b><br>
+                <img src="https://raw.githubusercontent.com/Dipak677/piccolo_file_picker/refs/heads/main/piccolo_file_picker_android.jpg?raw=true" alt="Android" width="300px">
+            </td>
+            <td align="center" style="font-size: 24px; font-weight: bold;"></td>
+            <td align="center">
+                <b>iOS</b><br>
+                <img src="https://raw.githubusercontent.com/Dipak677/piccolo_file_picker/refs/heads/main/piccolo_file_picker_ios.png?raw=true" alt="iOS" width="300px">
             </td>
         </tr>
     </table>
@@ -188,6 +194,9 @@ The package uses the following Flutter plugins:
 
 - [file_picker](https://pub.dev/packages/file_picker)
 - [image_picker](https://pub.dev/packages/image_picker)
+
+Don't forget to add the necessary permissions in your Android: ```AndroidManifest.xml``` and iOS: ```Info.plist``` files for proper functionality.
+
 
 ## License
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:piccolo_file_picker/piccolo_file_picker.dart';
 import 'package:path/path.dart' as p;
@@ -186,7 +188,7 @@ class PickerCard extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(12),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(Platform.isAndroid ? 12 : 9),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

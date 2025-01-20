@@ -8,3 +8,7 @@
 - Provided a simple API for seamless media and file handling.
 - Included error handling and listener callbacks for better integration.
 - Published on `pub.dev`.
+
+## [0.0.2] - Documentation and Preview Enhancements - 2025-01-20
+- README.md Update
+- Image Previews Added
