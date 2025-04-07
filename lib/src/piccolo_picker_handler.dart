@@ -18,20 +18,18 @@ class PiccoloPickerHandler {
   final ImagePicker _imagePicker = ImagePicker();
 
   /// Picks an image from the device's gallery.
-  Future<void> pickImageFromGallery() async =>
-      await _pickMedia(source: ImageSource.gallery, isImage: true);
+  Future<void> pickImageFromGallery({int? imageQuality}) async =>
+      await _pickMedia(source: ImageSource.gallery, isImage: true, imageQuality: imageQuality);
 
   /// Captures an image using the device's camera.
-  Future<void> pickImageFromCamera() async =>
-      await _pickMedia(source: ImageSource.camera, isImage: true);
+  Future<void> pickImageFromCamera({int? imageQuality}) async =>
+      await _pickMedia(source: ImageSource.camera, isImage: true, imageQuality: imageQuality);
 
   /// Picks a video from the device's gallery.
-  Future<void> pickVideoFromGallery() async =>
-      await _pickMedia(source: ImageSource.gallery, isImage: false);
+  Future<void> pickVideoFromGallery() async => await _pickMedia(source: ImageSource.gallery, isImage: false);
 
   /// Captures a video using the device's camera.
-  Future<void> pickVideoFromCamera() async =>
-      await _pickMedia(source: ImageSource.camera, isImage: false);
+  Future<void> pickVideoFromCamera() async => await _pickMedia(source: ImageSource.camera, isImage: false);
 
   /// Picks a file from the device's storage.
   ///
@@ -42,6 +40,7 @@ class PiccoloPickerHandler {
     List<String>? allowedExtensions,
     bool allowMultiple = false,
     bool allowCompression = true,
+    int compressionQuality = 30,
   }) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -49,15 +48,14 @@ class PiccoloPickerHandler {
         type: allowedExtensions == null ? FileType.any : FileType.custom,
         allowedExtensions: allowedExtensions,
         allowCompression: allowCompression,
+        compressionQuality: compressionQuality,
       );
 
       // Check if files were picked
       if (result != null) {
         if (result.files.length > 1) {
           // If multiple files picked, send a list to the listener
-          _listener.onFilePicked(
-              result.files.map((file) => file.path!).toList(),
-              isList: true);
+          _listener.onFilePicked(result.files.map((file) => file.path!).toList(), isList: true);
         } else {
           // If a single file picked, send the single path to the listener
           _listener.onFilePicked(result.files.single.path);
@@ -78,10 +76,11 @@ class PiccoloPickerHandler {
   Future<void> _pickMedia({
     required ImageSource source,
     required bool isImage,
+    int? imageQuality,
   }) async {
     try {
       XFile? pickedFile = isImage
-          ? await _imagePicker.pickImage(source: source)
+          ? await _imagePicker.pickImage(source: source, imageQuality: imageQuality)
           : await _imagePicker.pickVideo(source: source);
 
       // Notify the listener with the picked file path or null if no file was picked
