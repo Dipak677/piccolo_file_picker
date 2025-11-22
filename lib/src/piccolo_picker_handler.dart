@@ -35,19 +35,16 @@ class PiccoloPickerHandler {
   ///
   /// - [allowedExtensions]: A list of file extensions to filter the files (e.g., `['pdf', 'jpg']`).
   /// - [allowMultiple]: If `true`, allows selecting multiple files. Defaults to `false`.
-  /// - [allowCompression]: If `true`, allows compression for selected files. Defaults to `true`.
   Future<void> pickFileFromStorage({
     List<String>? allowedExtensions,
     bool allowMultiple = false,
-    bool allowCompression = true,
-    int compressionQuality = 30,
+    int compressionQuality = 0,
   }) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         allowMultiple: allowMultiple,
         type: allowedExtensions == null ? FileType.any : FileType.custom,
         allowedExtensions: allowedExtensions,
-        allowCompression: allowCompression,
         compressionQuality: compressionQuality,
       );
 

@@ -16,3 +16,7 @@
 
 ## [0.0.3] - File compression and image Quality option added  - 2025-04-07
 - Image and file
+
+## [0.0.4]
+- Updated to latest Gradle support.
+- Updated packages to latest versions.

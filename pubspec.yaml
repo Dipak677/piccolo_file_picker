@@ -1,6 +1,6 @@
 name: piccolo_file_picker
 description: "A versatile Flutter package for picking images, videos, and documents with filtering and multi-selection options."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/Dipak677/piccolo_file_picker
 
 platforms:
@@ -14,8 +14,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  file_picker: ^8.1.7
-  image_picker: ^1.1.2
+  file_picker: ^10.3.7
+  image_picker: ^1.2.1
   
 
 dev_dependencies:

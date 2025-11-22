@@ -86,9 +86,9 @@ await pickerHandler.pickVideoFromCamera();
 To pick files from storage, specify allowed extensions and whether multiple files are allowed:
 ```dart
 await pickerHandler.pickFileFromStorage(
-  allowedExtensions: ['pdf', 'docx', 'jpg'], // Optional
+  allowedExtensions: ['pdf', 'docx', 'jpg'], // Optional: specify allowed file types
   allowMultiple: true, // Optional, defaults to false
-  allowCompression: true, // Optional, defaults to true
+  compressionQuality: 30, // Optional: defaults to 0 (no compression)
 );
 
 ```
